@@ -47,7 +47,7 @@ O catálogo é incompleto e uma simples menção a uma palavra não comprova exp
 - Cópia e impressão em PDF devem ser verificadas no navegador.
 - Testar responsividade e verificar execução **Actions → CI - testes e build**.
 
-**Estado em 30/10/2026:** GitHub Actions CI com últimas execuções aprovadas conforme capturas; aplicação publicada na Vercel; interface de edição e pré-visualização de impressão PDF comprovadas por capturas. Captura dos resultados numéricos de compatibilidade ainda pendente; salvamento efetivo do PDF não demonstrado isoladamente.
+**Estado em 30/10/2026:** GitHub Actions CI com últimas execuções aprovadas conforme capturas; aplicação publicada na Vercel; interface de edição e pré-visualização de impressão PDF comprovadas por capturas. Resultado de compatibilidade do exemplo fictício confirmado: 36%, 2 requisitos encontrados (Excel e análise de dados) e 4 ausentes; salvamento efetivo do PDF não demonstrado isoladamente.
 
 ## Processo de criação e evolução do mega prompt
 A especificação inicial foi elaborada com ChatGPT: comparação de currículo e vaga, porcentagem explicável, palavras-chave presentes/ausentes, currículo ajustado, design responsivo e exportação. Com os créditos do Lovable indisponíveis, a primeira implementação foi feita diretamente em React/TypeScript/GitHub. Optou-se por **não simular reescrita por IA**: o MVP local preserva o currículo, permite edição e calcula apenas correspondência de termos, sem APIs externas.
@@ -71,3 +71,6 @@ A descrição do desafio solicita uso do Lovable; esta versão alternativa sem L
 - Testes e build de CI aprovados nas execuções recentes apresentadas pelo participante.
 - Pendência: registrar captura da aba Compatibilidade com indicador e lista de termos encontrados/ausentes.
 - Dica de exportação: desmarcar 'Cabeçalhos e rodapés' nas opções de impressão do navegador.
+
+## Evidência final de compatibilidade
+Em 30/10/2026 a captura do resultado demonstrativo confirmou **36% (4 pontos em 11)**, com **2 termos encontrados** e **4 ausentes**. A demonstração foi registrada em [homologação funcional](docs/homologacao-funcional-2026-10-30.md). O indicador é apenas textual, não nota oficial de ATS.
