@@ -1,8 +1,20 @@
 # CurrículoAlvo ATS
 
-MVP de análise textual de currículo versus vaga, com termos encontrados/ausentes e currículo editável. A análise é estimativa, não pontuação oficial de ATS. Nunca inventar experiência.
+**Seu talento alinhado às oportunidades.**
 
-## Execução
+MVP educativo de comparação textual entre currículo e descrição de vaga. Desenvolvido com **React + TypeScript + Vite**, sem depender de créditos Lovable.
+
+> **Regra ética:** o aplicativo não inventa nem insere experiências, cursos, certificações, números ou habilidades ausentes. O usuário é responsável por revisar toda alteração manual.
+
+## Funcionalidades (v0.1)
+- Entrada de vaga e currículo por texto, com exemplo **fictício**.
+- Indicador de aderência textual ponderado pelos termos de um **catálogo local**.
+- Lista de termos encontrados e ausentes; evidência textual quando detectada.
+- Currículo editável, preservado sem reescrita generativa.
+- Copiar texto e exportar por impressão do navegador (**Salvar como PDF**).
+- Dados em memória da aba: **sem banco de dados, login ou API externa**.
+
+## Executar localmente
 
 ```bash
 npm install
@@ -11,5 +23,43 @@ npm test
 npm run build
 ```
 
-## Origem do código
-Projeto React, TypeScript e Vite desenvolvido fora do Lovable durante indisponibilidade de créditos. O MVP completo está no pacote preparado para publicação.
+O Vite mostra o endereço local, normalmente http://localhost:5173.
+
+## Como funciona
+`src/ats.ts` define o catálogo de expressões, normaliza diferenças de acentuação e capitalização, encontra os termos presentes na vaga e busca evidências no currículo. A pontuação é: **soma dos pesos encontrados / soma dos pesos dos requisitos reconhecidos × 100**, arredondada. Se não houver nenhum requisito reconhecido, mostra indicador indisponível em vez de fabricar percentual.
+
+O catálogo é incompleto e uma simples menção a uma palavra não comprova experiência. O sistema **não é um ATS real**, não prevê classificação de recrutadores e não garante entrevistas.
+
+`prepareResume` apenas normaliza quebras de linha e espaços finais; a edição posterior é manual. Para gerar PDF, abrir a aba de currículo, clicar **Exportar PDF / imprimir** e escolher **Salvar como PDF**.
+
+## Estrutura
+- `src/main.tsx`: interface, estado e ações.
+- `src/ats.ts`: análise determinística e exemplos.
+- `src/style.css`: layout responsivo e estilos de impressão.
+- `tests/ats.test.ts`: verificações unitárias.
+- `.github/workflows/ci.yml`: testes e build em GitHub Actions.
+
+## Critérios de validação
+- Colagem de vaga e currículo; campos com pelo menos 35 caracteres.
+- Exemplos fictícios demonstram termos presentes e ausentes.
+- Termos não reconhecidos não geram um score inventado.
+- Nenhuma competência ausente é adicionada ao texto do currículo.
+- Cópia e impressão em PDF devem ser verificadas no navegador.
+- Testar responsividade e verificar execução **Actions → CI - testes e build**.
+
+**Estado:** código publicado no GitHub. Build em CI, testes de navegador e publicação do site ainda precisam ser confirmados antes da entrega DIO.
+
+## Processo de criação e evolução do mega prompt
+A especificação inicial foi elaborada com ChatGPT: comparação de currículo e vaga, porcentagem explicável, palavras-chave presentes/ausentes, currículo ajustado, design responsivo e exportação. Com os créditos do Lovable indisponíveis, a primeira implementação foi feita diretamente em React/TypeScript/GitHub. Optou-se por **não simular reescrita por IA**: o MVP local preserva o currículo, permite edição e calcula apenas correspondência de termos, sem APIs externas.
+
+**Evoluções possíveis:** correspondência semântica mais ampla, exportação .docx, armazenamento consentido e reescrita assistida por IA com revisão humana. Nenhuma delas deve ser apresentada como implementada.
+
+## Segurança e privacidade
+Não inserir currículos reais em testes ou repositório. Não versionar `.env`, chaves, senhas ou tokens. Sem persistência intencional dos textos digitados.
+
+## Endereços
+- Código: https://github.com/Black2026/curriculoalvo-ats
+- **Aplicação pública:** ainda não publicada/confirmada.
+
+## Observação sobre o desafio DIO
+A descrição do desafio solicita uso do Lovable; esta versão alternativa sem Lovable pode **não satisfazer integralmente** esse requisito. Publicar e validar o endereço público, então decidir se será necessário integrar a etapa Lovable quando os créditos retornarem.
