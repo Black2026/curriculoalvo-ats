@@ -2,7 +2,7 @@ export type Requirement={label:string;weight:number;found:boolean;evidence?:stri
 export type Analysis={score:number|null;requirements:Requirement[];found:number;missing:number;message?:string};
 const catalog:[string,string[],number][]=[
 ['Excel',['excel','microsoft excel'],2],['Power BI',['power bi','powerbi'],2],['SQL',['sql'],2],['Python',['python'],2],['JavaScript',['javascript'],2],['TypeScript',['typescript'],2],['React',['react','react.js'],2],['Node.js',['node.js','nodejs'],2],['Git',['git'],2],['GitHub',['github'],2],['AWS',['aws'],2],['Docker',['docker'],2],['Figma',['figma'],2],['CRM',['crm'],2],['SAP',['sap'],2],['Gestão de projetos',['gestão de projetos','gerenciamento de projetos'],2],['Análise de dados',['análise de dados','analisar dados'],2],['Atendimento ao cliente',['atendimento ao cliente','suporte ao cliente'],1],['Comunicação',['comunicação'],1],['Liderança',['liderança'],1],['Scrum',['scrum'],2],['Kanban',['kanban'],2],['Inglês',['inglês','english'],1],['Graduação',['graduação','ensino superior','bacharelado'],1]];
-export const normalize=(s:string)=>s.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
+export const normalize=(s:string)=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const has=(s:string,p:string)=>(' '+normalize(s).replace(/[^a-z0-9]+/g,' ')+' ').includes(' '+normalize(p).replace(/[^a-z0-9]+/g,' ')+' ');
 export function analyze(vacancy:string,resume:string):Analysis{
 const requirements=catalog.filter(([,aliases])=>aliases.some(a=>has(vacancy,a))).map(([label,aliases,weight])=>{const found=aliases.some(a=>has(resume,a));const evidence=found?resume.split(/\n|[.!?] /).map(s=>s.trim()).find(s=>aliases.some(a=>has(s,a)))?.slice(0,220):undefined;return {label,weight,found,evidence}});
