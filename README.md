@@ -47,7 +47,7 @@ O catálogo é incompleto e uma simples menção a uma palavra não comprova exp
 - Cópia e impressão em PDF devem ser verificadas no navegador.
 - Testar responsividade e verificar execução **Actions → CI - testes e build**.
 
-**Estado:** código publicado no GitHub. Build em CI, testes de navegador e publicação do site ainda precisam ser confirmados antes da entrega DIO.
+**Estado em 30/10/2026:** GitHub Actions CI com últimas execuções aprovadas conforme capturas; aplicação publicada na Vercel; interface de edição e pré-visualização de impressão PDF comprovadas por capturas. Captura dos resultados numéricos de compatibilidade ainda pendente; salvamento efetivo do PDF não demonstrado isoladamente.
 
 ## Processo de criação e evolução do mega prompt
 A especificação inicial foi elaborada com ChatGPT: comparação de currículo e vaga, porcentagem explicável, palavras-chave presentes/ausentes, currículo ajustado, design responsivo e exportação. Com os créditos do Lovable indisponíveis, a primeira implementação foi feita diretamente em React/TypeScript/GitHub. Optou-se por **não simular reescrita por IA**: o MVP local preserva o currículo, permite edição e calcula apenas correspondência de termos, sem APIs externas.
@@ -59,7 +59,15 @@ Não inserir currículos reais em testes ou repositório. Não versionar `.env`,
 
 ## Endereços
 - Código: https://github.com/Black2026/curriculoalvo-ats
-- **Aplicação pública:** ainda não publicada/confirmada.
+- **Aplicação pública:** https://curriculoalvo-ats.vercel.app (Vercel; publicação confirmada em 30/10/2026).
 
 ## Observação sobre o desafio DIO
 A descrição do desafio solicita uso do Lovable; esta versão alternativa sem Lovable pode **não satisfazer integralmente** esse requisito. Publicar e validar o endereço público, então decidir se será necessário integrar a etapa Lovable quando os créditos retornarem.
+
+## Homologação parcial — 30/10/2026
+- Aplicação publicada em https://curriculoalvo-ats.vercel.app, confirmada em tela da Vercel e no navegador.
+- Exemplo fictício de currículo exibido no editor de texto; conteúdo mantido na visualização de impressão em uma página.
+- Diálogo de impressão com destino 'Salvar como PDF' exibido; não há evidência isolada de arquivo já salvo.
+- Testes e build de CI aprovados nas execuções recentes apresentadas pelo participante.
+- Pendência: registrar captura da aba Compatibilidade com indicador e lista de termos encontrados/ausentes.
+- Dica de exportação: desmarcar 'Cabeçalhos e rodapés' nas opções de impressão do navegador.
